@@ -3,6 +3,7 @@ package com.example.mobilecookbook
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -12,7 +13,7 @@ class RecipeAdapter(
     class ItemViewHolder(
         itemView: View,
     ) : RecyclerView.ViewHolder(itemView) {
-        val recipeIV: TextView = itemView.findViewById(R.id.recipeIV)
+        val recipeIV: ImageView = itemView.findViewById(R.id.recipeIV)
         val recipeNameTV: TextView = itemView.findViewById(R.id.recipeNameTV)
         val dishTypeTV: TextView = itemView.findViewById(R.id.recipeDishTypeTV)
         val prepTimeTV: TextView = itemView.findViewById(R.id.recipePrepTimeTV)

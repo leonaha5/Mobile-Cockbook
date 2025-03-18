@@ -5,8 +5,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.Fragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,26 +19,22 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        
-        initializeRecyclerView()
 
+        if (savedInstanceState == null) {
+            replaceFragment(RecipeListFragment())
+        }
+
+        val buttonSwitchFragment = findViewById<FloatingActionButton>(R.id.addRecipeFAB)
+        buttonSwitchFragment.setOnClickListener {
+            replaceFragment(AddRecipeFragment())
+        }
     }
 
-    private fun initializeRecyclerView() {
-        val recyclerView = findViewById<RecyclerView>(R.id.recipesRecyclerView)
-
-        val adapter =
-            RecipeAdapter(
-                recipeList = mutableListOf(
-                    Recipe("Spaghetti Bolognese", "Pasta", 30),
-                    Recipe("Chicken Fajitas", "Mexican", 20),
-                    Recipe("Vegetable Stir Fry", "Asian", 15),
-                    Recipe("Beef Burgers", "American", 25),
-                    Recipe("Grilled Salmon", "Seafood", 18)
-                ),
-            )
-
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
+
 }

@@ -14,32 +14,50 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:hint="Name" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:gravity="start"
             android:hint="Ingridinets"
             android:lines="4" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:hint="Instructions" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="fill_horizontal"
+            android:orientation="horizontal">
 
+            <EditText
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:hint="Dish type" />
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <EditText
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:hint="Prep time (min)" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
             <RatingBar
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -47,9 +65,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dodaj" />
-
         </LinearLayout>
-
-
     </LinearLayout>
 </FrameLayout>

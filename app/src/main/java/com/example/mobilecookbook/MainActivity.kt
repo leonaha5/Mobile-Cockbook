@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity(), RecipeListListener {
 
         //TODO add the ability to edit racipes
 
-        //TODO make the add reicpe FAB only appear in the recipe list fragment
-
 
         if (savedInstanceState == null) {
             replaceFragment(RecipeListFragment(), backStack = false)

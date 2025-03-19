@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), RecipeListListener {
             .commit()
     }
 
-    override fun switchToRecipeDetailsFragment(data: String) {
+    override fun switchToRecipeDetailsFragment(data: Recipe) {
         replaceFragment(RecipeDetailsFragment.newInstance(data))
 
     }

@@ -4,7 +4,7 @@ class Recipe(
     val name: String,
     val type: String,
     val prepTime: Int,
-    val rating: Int? = null,
-    val ingredients: MutableList<String>? = null,
-    val steps: MutableList<String>? = null,
+    val rating: Float,
+    val ingredients: String,
+    val instructions: String
 )

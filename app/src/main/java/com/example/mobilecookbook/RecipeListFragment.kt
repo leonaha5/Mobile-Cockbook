@@ -9,15 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class RecipeListFragment : Fragment() {
     private lateinit var listener: RecipeListListener
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        // sprawdzamy czy Aktywność (context) implementuje interface (FragmentAListener
         if (context is RecipeListListener) {
             listener = context
         } else {
@@ -36,7 +32,7 @@ class RecipeListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recipesRecyclerView)
-        val openRecipeDetails: (String) -> Unit = { data ->
+        val openRecipeDetails: (Recipe) -> Unit = { data ->
             listener.switchToRecipeDetailsFragment(data)
         }
 
@@ -44,12 +40,47 @@ class RecipeListFragment : Fragment() {
             RecipeAdapter(
                 openRecipeDetails = openRecipeDetails,
                 recipeList = mutableListOf(
-                    Recipe("Spaghetti Bolognese", "Pasta", 30),
-                    Recipe("Chicken Fajitas", "Mexican", 20),
-                    Recipe("Vegetable Stir Fry", "Asian", 15),
-                    Recipe("Beef Burgers", "American", 25),
-                    Recipe("Grilled Salmon", "Seafood", 18)
-                ),
+                    Recipe(
+                        "Spaghetti Bolognese",
+                        "Pasta",
+                        30,
+                        4f,
+                        "Spaghetti, Minced Beef, Tomato Sauce, Onion, Garlic",
+                        "Cook spaghetti, Prepare bolognese sauce, Combine spaghetti and sauce"
+                    ),
+                    Recipe(
+                        "Chicken Fajitas",
+                        "Mexican",
+                        20,
+                        5f,
+                        "Chicken Breast, Bell Peppers, Onion, Tortilla, Salsa",
+                        "Slice chicken and vegetables, Cook chicken and vegetables, Serve with tortilla and salsa"
+                    ),
+                    Recipe(
+                        "Vegetable Stir Fry",
+                        "Asian",
+                        15,
+                        4f,
+                        "Broccoli, Carrot, Bell Peppers, Onion, Soy Sauce",
+                        "Chop vegetables, Heat wok or pan, Stir-fry vegetables"
+                    ),
+                    Recipe(
+                        "Beef Burgers",
+                        "American",
+                        25,
+                        5f,
+                        "Minced Beef, Bread, Lettuce, Tomato, Cheese",
+                        "Prepare burger patties, Grill or cook burgers, Assemble burgers"
+                    ),
+                    Recipe(
+                        "Grilled Salmon",
+                        "Seafood",
+                        18,
+                        5f,
+                        "Salmon Fillet, Lemon, Butter, Salt, Pepper",
+                        "Season salmon, Grill salmon, Serve with lemon and butter"
+                    )
+                )
             )
 
         recyclerView.layoutManager = LinearLayoutManager(view.context)

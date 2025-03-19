@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class MainActivity : AppCompatActivity(), RecipeListListener {
@@ -20,13 +19,16 @@ class MainActivity : AppCompatActivity(), RecipeListListener {
             insets
         }
 
+        //TODO add the ability to add racipes
+        //TODO add the ability to remove
+
+        //TODO add the ability to edit racipes
+
+        //TODO make the add reicpe FAB only appear in the recipe list fragment
+
+
         if (savedInstanceState == null) {
             replaceFragment(RecipeListFragment(), backStack = false)
-        }
-
-        val buttonSwitchFragment = findViewById<FloatingActionButton>(R.id.addRecipeFAB)
-        buttonSwitchFragment.setOnClickListener {
-            replaceFragment(AddRecipeFragment())
         }
     }
 
@@ -37,9 +39,12 @@ class MainActivity : AppCompatActivity(), RecipeListListener {
             .commit()
     }
 
+    override fun switchToAddRecipeFragment() {
+        replaceFragment(AddRecipeFragment.newInstance())
+    }
+
     override fun switchToRecipeDetailsFragment(data: Recipe) {
         replaceFragment(RecipeDetailsFragment.newInstance(data))
-
     }
 
 }

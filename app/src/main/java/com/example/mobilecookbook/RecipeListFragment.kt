@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class RecipeListFragment : Fragment() {
     private lateinit var listener: RecipeListListener
@@ -34,6 +35,11 @@ class RecipeListFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recipesRecyclerView)
         val openRecipeDetails: (Recipe) -> Unit = { data ->
             listener.switchToRecipeDetailsFragment(data)
+        }
+
+        val buttonSwitchFragment = view.findViewById<FloatingActionButton>(R.id.addRecipeFAB)
+        buttonSwitchFragment.setOnClickListener {
+            listener.switchToAddRecipeFragment()
         }
 
         val adapter =

@@ -8,7 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class RecipeAdapter(
-    private val recipeList: MutableList<Recipe>
+    private val recipeList: MutableList<Recipe>,
+    private val openRecipeDetails: (String) -> Unit,
 ) : RecyclerView.Adapter<RecipeAdapter.ItemViewHolder>() {
     class ItemViewHolder(
         itemView: View,
@@ -39,6 +40,10 @@ class RecipeAdapter(
         holder.recipeNameTV.text = currentRecipe.name
         holder.dishTypeTV.text = currentRecipe.type
         holder.prepTimeTV.text = currentRecipe.prepTime.toString()
+
+        holder.recipeIV.setOnClickListener {
+            openRecipeDetails(currentRecipe.name)
+        }
 
 
     }

@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), RecipeListListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (savedInstanceState == null) {
-            replaceFragment(RecipeListFragment())
+            replaceFragment(RecipeListFragment(), backStack = false)
         }
 
         val buttonSwitchFragment = findViewById<FloatingActionButton>(R.id.addRecipeFAB)
@@ -30,11 +30,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+    private fun replaceFragment(fragment: Fragment, backStack: Boolean = true) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
+            .also { if (backStack) it.addToBackStack(null) }
             .commit()
+    }
+
+    override fun switchToRecipeDetailsFragment(data: String) {
+        replaceFragment(RecipeDetailsFragment.newInstance(data))
+
     }
 
 }

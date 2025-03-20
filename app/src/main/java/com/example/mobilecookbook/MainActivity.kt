@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity(), RecipeListListener {
             insets
         }
 
-        //TODO add the ability to add racipes
-        //TODO add the ability to remove
 
+        //TODO add the ability to remove
+        // TODO add an icon for the add recipe fab
         //TODO add the ability to edit racipes
 
 
@@ -43,6 +43,10 @@ class MainActivity : AppCompatActivity(), RecipeListListener {
 
     override fun switchToRecipeDetailsFragment(data: Recipe) {
         replaceFragment(RecipeDetailsFragment.newInstance(data))
+    }
+
+    override fun switchToRecipeListFragment() {
+        replaceFragment(RecipeListFragment.newInstance())
     }
 
 }

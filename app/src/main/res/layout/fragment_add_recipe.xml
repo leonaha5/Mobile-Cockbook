@@ -12,11 +12,13 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/AddRecipeNameET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name" />
 
         <EditText
+            android:id="@+id/AddRecipeIngredientsET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start"
@@ -24,6 +26,7 @@
             android:lines="4" />
 
         <EditText
+            android:id="@+id/AddRecipeInstructionsET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Instructions" />
@@ -36,6 +39,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/AddRecipeDishTypeET"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:hint="Dish type" />
@@ -46,9 +50,11 @@
                 android:layout_weight="1" />
 
             <EditText
+                android:id="@+id/AddRecipePrepTimeET"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:hint="Prep time (min)" />
+                android:hint="Prep time (min)"
+                android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,10 +64,12 @@
             android:orientation="vertical">
 
             <RatingBar
+                android:id="@+id/AddRecipeRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <Button
+                android:id="@+id/AddRecipeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dodaj" />

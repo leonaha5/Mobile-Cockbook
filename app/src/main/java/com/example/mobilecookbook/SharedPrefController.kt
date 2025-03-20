@@ -30,3 +30,9 @@ fun editRecipe(context: Context, recipe: Recipe, index: Int) {
     list[index] = recipe
     saveRecipeList(context, list)
 }
+
+fun deleteRecipe(context: Context, index: Int) {
+    val list = getRecipeList(context)
+    list.removeAt(index)
+    saveRecipeList(context, list)
+}

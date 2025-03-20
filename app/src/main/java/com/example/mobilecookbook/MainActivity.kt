@@ -18,10 +18,7 @@ class MainActivity : AppCompatActivity(), RecipeListListener {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-
-        //TODO add the ability to remove
-        // TODO add an icon for the add recipe fab
+        
         //TODO add the ability to edit racipes
 
 

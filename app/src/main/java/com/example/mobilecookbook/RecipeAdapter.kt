@@ -1,5 +1,6 @@
 package com.example.mobilecookbook
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class RecipeAdapter(
+    private val context: Context,
     private val recipeList: MutableList<Recipe>,
     private val openRecipeDetails: (Recipe) -> Unit,
 ) : RecyclerView.Adapter<RecipeAdapter.ItemViewHolder>() {
@@ -18,6 +20,7 @@ class RecipeAdapter(
         val recipeNameTV: TextView = itemView.findViewById(R.id.recipeNameTV)
         val dishTypeTV: TextView = itemView.findViewById(R.id.recipeDishTypeTV)
         val prepTimeTV: TextView = itemView.findViewById(R.id.recipePrepTimeTV)
+        val recipeDeleteIB: ImageView = itemView.findViewById(R.id.recipeDeleteIB)
     }
 
     override fun onCreateViewHolder(
@@ -43,6 +46,12 @@ class RecipeAdapter(
 
         holder.recipeIV.setOnClickListener {
             openRecipeDetails(currentRecipe)
+        }
+
+        holder.recipeDeleteIB.setOnClickListener {
+            deleteRecipe(context, position)
+            recipeList.removeAt(position)
+            notifyItemRemoved(position)
         }
 
 

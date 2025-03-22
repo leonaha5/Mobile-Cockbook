@@ -18,9 +18,10 @@ class MainActivity : AppCompatActivity(), RecipeListListener {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        
-        //TODO add the ability to edit racipes
 
+        //TODO add the ability to edit racipes
+        //TODO add ability to add images to recipes
+        //TODO add ability to edit recipes images
 
         if (savedInstanceState == null) {
             replaceFragment(RecipeListFragment(), backStack = false)
@@ -38,8 +39,12 @@ class MainActivity : AppCompatActivity(), RecipeListListener {
         replaceFragment(AddRecipeFragment.newInstance())
     }
 
-    override fun switchToRecipeDetailsFragment(data: Recipe) {
-        replaceFragment(RecipeDetailsFragment.newInstance(data))
+    override fun switchToEditRecipeDetailsFragment(data: Recipe, index: Int) {
+        replaceFragment(EditRecipeDetailsFragment.newInstance(data, index))
+    }
+
+    override fun switchToRecipeDetailsFragment(data: Recipe, index: Int) {
+        replaceFragment(RecipeDetailsFragment.newInstance(data, index))
     }
 
     override fun switchToRecipeListFragment() {

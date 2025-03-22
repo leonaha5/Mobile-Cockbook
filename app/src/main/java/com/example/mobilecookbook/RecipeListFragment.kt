@@ -18,7 +18,7 @@ class RecipeListFragment : Fragment() {
         if (context is RecipeListListener) {
             listener = context
         } else {
-            throw RuntimeException("$context must implement  FragmentAListener")
+            throw RuntimeException("$context must implement RecipeListListener")
         }
     }
 
@@ -32,17 +32,14 @@ class RecipeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recipesRecyclerView)
-        val openRecipeDetails: (Recipe) -> Unit = { data ->
-            listener.switchToRecipeDetailsFragment(data)
-        }
-
-        val buttonSwitchFragment = view.findViewById<FloatingActionButton>(R.id.addRecipeFAB)
-        buttonSwitchFragment.setOnClickListener {
+        view.findViewById<FloatingActionButton>(R.id.addRecipeFAB).setOnClickListener {
             listener.switchToAddRecipeFragment()
         }
 
-
+        val openRecipeDetails: (Recipe, Int) -> Unit = { data, index ->
+            listener.switchToRecipeDetailsFragment(data, index)
+        }
+        
         val adapter =
             RecipeAdapter(
                 context = view.context,
@@ -50,6 +47,7 @@ class RecipeListFragment : Fragment() {
                 recipeList = getRecipeList(view.context)
             )
 
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recipesRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(view.context)
         recyclerView.adapter = adapter
     }
@@ -57,9 +55,6 @@ class RecipeListFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() =
-            RecipeListFragment().apply {
-                arguments = Bundle()
-            }
+        fun newInstance() = RecipeListFragment()
     }
 }

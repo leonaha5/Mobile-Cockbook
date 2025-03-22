@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 class RecipeAdapter(
     private val context: Context,
     private val recipeList: MutableList<Recipe>,
-    private val openRecipeDetails: (Recipe) -> Unit,
+    private val openRecipeDetails: (Recipe, Int) -> Unit,
 ) : RecyclerView.Adapter<RecipeAdapter.ItemViewHolder>() {
     class ItemViewHolder(
         itemView: View,
@@ -45,7 +45,7 @@ class RecipeAdapter(
         holder.prepTimeTV.text = currentRecipe.prepTime.toString()
 
         holder.recipeIV.setOnClickListener {
-            openRecipeDetails(currentRecipe)
+            openRecipeDetails(currentRecipe, position)
         }
 
         holder.recipeDeleteIB.setOnClickListener {

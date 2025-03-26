@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RatingBar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.slider.Slider
 
 
 class AddRecipeFragment : Fragment() {
@@ -47,31 +49,36 @@ class AddRecipeFragment : Fragment() {
             val addRecipeNameET = view.findViewById<EditText>(R.id.AddRecipeNameET)
             val addRecipeIngredientsET = view.findViewById<EditText>(R.id.AddRecipeIngredientsET)
             val addRecipeInstructionsET = view.findViewById<EditText>(R.id.AddRecipeInstructionsET)
-            val addRecipeDishTypeET = view.findViewById<EditText>(R.id.AddRecipeDishTypeET)
-            val addRecipePrepTimeET = view.findViewById<EditText>(R.id.AddRecipePrepTimeET)
+            val addRecipePrepTimeS = view.findViewById<Slider>(R.id.addRecipePrepTimeS)
             val addRecipeRB = view.findViewById<RatingBar>(R.id.AddRecipeRB)
+
+            addRecipePrepTimeS.addOnChangeListener(Slider.OnChangeListener { slider, value, fromUser ->
+                Toast.makeText(
+                    requireContext(), value.toInt()
+                        .toString() + " mins", Toast.LENGTH_SHORT
+                ).show()
+            })
 
             if (!checkEmptyFields(
                     addRecipeNameET,
                     addRecipeIngredientsET,
                     addRecipeInstructionsET,
-                    addRecipeDishTypeET,
-                    addRecipePrepTimeET
                 )
             ) {
+                Toast.makeText(context, "Fields cannot be empty!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val recipe = Recipe(
                 addRecipeNameET.text.toString().trim(),
-                addRecipeDishTypeET.text.toString().trim(),
-                addRecipePrepTimeET.text.toString().trim().toInt(),
+                "",
+                addRecipePrepTimeS.value.toInt(),
                 addRecipeRB.rating,
                 addRecipeIngredientsET.text.toString().trim(),
                 addRecipeInstructionsET.text.toString().trim(),
             )
             addRecipe(view.context, recipe)
-            listener.switchToRecipeListFragment()
+            parentFragmentManager.popBackStack()
         }
 
     }

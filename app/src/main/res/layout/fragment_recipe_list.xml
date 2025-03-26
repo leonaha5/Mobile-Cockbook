@@ -27,7 +27,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:backgroundTint="#9f33ff"
+        android:backgroundTint="@color/my_light_primary"
         android:src="@drawable/add" />
 
 

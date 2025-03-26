@@ -48,6 +48,10 @@ class RecipeAdapter(
             openRecipeDetails(currentRecipe, position)
         }
 
+        holder.recipeNameTV.setOnClickListener {
+            openRecipeDetails(currentRecipe, position)
+        }
+
         holder.recipeDeleteIB.setOnClickListener {
             deleteRecipe(context, position)
             recipeList.removeAt(position)

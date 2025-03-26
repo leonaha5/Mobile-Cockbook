@@ -1,78 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="25dp"
+    android:orientation="vertical"
     tools:context=".AddRecipeFragment">
 
-    <LinearLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/AddRecipeNameET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/AddRecipeIngredientsET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start"
             android:hint="Ingridinets"
             android:lines="4" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/AddRecipeInstructionsET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Instructions" />
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:labelFor="@+id/addRecipePrepTimeS"
+        android:text="Prep time (min)" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <com.google.android.material.slider.Slider
+        android:id="@+id/addRecipePrepTimeS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stepSize="5"
+        android:valueFrom="0"
+        android:valueTo="120" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RatingBar
+            android:id="@+id/AddRecipeRB"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="fill_horizontal"
-            android:orientation="horizontal">
+            android:progressTint="@color/my_light_primary" />
 
-            <EditText
-                android:id="@+id/AddRecipeDishTypeET"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:hint="Dish type" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <EditText
-                android:id="@+id/AddRecipePrepTimeET"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:hint="Prep time (min)"
-                android:inputType="number" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/AddRecipeButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <RatingBar
-                android:id="@+id/AddRecipeRB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/AddRecipeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dodaj" />
-        </LinearLayout>
+            android:text="Dodaj" />
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>

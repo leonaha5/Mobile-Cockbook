@@ -2,6 +2,7 @@ package com.example.mobilecookbook
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,19 @@ import com.google.gson.Gson
 
 class RecipeDetailsFragment : Fragment() {
     private lateinit var listener: RecipeListListener
+
+
+    override fun onStart() {
+        super.onStart()
+        super.onStop()
+        Log.d(tag, "onStop: Activity is no longer visible to the user")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        super.onDestroy()
+        Log.d(tag, "onDestroy: Activity is being destroyed")
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -32,7 +46,8 @@ class RecipeDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recipe = Gson().fromJson(arguments?.getString("data_key"), Recipe::class.java)
+        val recipeIndex = arguments?.getInt("recipe_index")
+        val recipe = getRecipeList(requireContext())[recipeIndex!!]
 
         view.findViewById<TextView>(R.id.detailsDishNameTV).text = recipe.name
         view.findViewById<TextView>(R.id.detailsIngredientsTV).text = recipe.ingredients
@@ -41,13 +56,14 @@ class RecipeDetailsFragment : Fragment() {
         view.findViewById<TextView>(R.id.detailsDishTypeTV).text = recipe.type
         view.findViewById<TextView>(R.id.detailsPrepTimeTV).text = recipe.prepTime.toString()
 
-        view.findViewById<ImageButton>(R.id.detailsEditDishIB).setOnClickListener {
+        view.findViewById<ImageButton>(R.id.detailsEditDishFAB).setOnClickListener {
             listener.switchToEditRecipeDetailsFragment(
                 recipe,
                 requireArguments().getInt("recipe_index")
             )
         }
     }
+
 
     companion object {
         fun newInstance(data: Recipe, index: Int): Fragment {

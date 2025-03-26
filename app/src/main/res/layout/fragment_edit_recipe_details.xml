@@ -13,21 +13,31 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/dish" />
+            android:layout_height="250dp"
+            android:contentDescription="dish image"
+            android:src="@drawable/dish"
+            tools:ignore="HardcodedText,ImageContrastCheck" />
 
-        <LinearLayout
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:labelFor="@+id/editDetailsPrepTimeET"
+            android:text="Prep time"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:layout_marginHorizontal="10dp">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editDetailsDishNameET"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:textSize="20sp" />
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,65 +47,70 @@
             <RatingBar
                 android:id="@+id/editDetailsRatingRB"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:progressTint="@color/my_light_primary" />
         </LinearLayout>
 
-        <LinearLayout
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:labelFor="@+id/addRecipePrepTimeS"
+            android:text="Prep time (min)" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/editDetailsPrepTimeS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:gravity="fill_horizontal"
-            android:orientation="horizontal">
+            android:stepSize="5"
+            android:valueFrom="0"
+            android:valueTo="120" />
 
-            <EditText
-                android:id="@+id/editDetailsDishTypeET"
-                android:layout_width="wrap_content"
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:labelFor="@+id/editDetailsIngredientsET"
+            android:text="Ingridients"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editDetailsIngredientsET"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="start"
+                android:lines="2"
                 android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:labelFor="@+id/editDetailsInstructionsET"
+            android:text="Instructions"
+            tools:ignore="HardcodedText" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editDetailsInstructionsET"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Czas: "
-                    tools:ignore="HardcodedText" />
-
-                <EditText
-                    android:id="@+id/editDetailsPrepTimeET"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="min"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/editDetailsIngredientsET"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/editDetailsInstructionsET"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textSize="14sp" />
+                android:gravity="start"
+                android:lines="4"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
@@ -106,6 +121,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:backgroundTint="#9f33ff"
-        android:src="@drawable/check" />
+        android:backgroundTint="@color/my_light_primary"
+        android:contentDescription="save"
+        android:src="@drawable/check"
+        tools:ignore="ContentDescription,HardcodedText" />
 </RelativeLayout>

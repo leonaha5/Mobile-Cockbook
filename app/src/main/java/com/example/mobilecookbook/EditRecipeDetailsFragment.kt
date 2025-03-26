@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.RatingBar
 import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.slider.Slider
 import com.google.gson.Gson
 
 
@@ -40,29 +41,27 @@ class EditRecipeDetailsFragment : Fragment() {
         val editDetailsIngredientsET: EditText? = view.findViewById(R.id.editDetailsIngredientsET)
         val editDetailsInstructionsET: EditText? = view.findViewById(R.id.editDetailsInstructionsET)
         val editDetailsRatingRB: RatingBar? = view.findViewById(R.id.editDetailsRatingRB)
-        val editDetailsDishTypeET: EditText? = view.findViewById(R.id.editDetailsDishTypeET)
-        val editDetailsPrepTimeET: EditText? = view.findViewById(R.id.editDetailsPrepTimeET)
+        val editDetailsPrepTimeS: Slider? = view.findViewById(R.id.editDetailsPrepTimeS)
 
         editDetailsDishNameET?.setText(recipe.name)
         editDetailsIngredientsET?.setText(recipe.ingredients)
         editDetailsInstructionsET?.setText(recipe.instructions)
         editDetailsRatingRB?.rating = recipe.rating
-        editDetailsDishTypeET?.setText(recipe.type)
-        editDetailsPrepTimeET?.setText(recipe.prepTime.toString())
+        editDetailsPrepTimeS?.value = recipe.prepTime.toFloat()
 
 
         view.findViewById<FloatingActionButton>(R.id.saveEditedRecipeFAB)?.setOnClickListener {
             val newRecipe = Recipe(
                 editDetailsDishNameET!!.text.toString(),
-                editDetailsDishTypeET!!.text.toString(),
-                editDetailsPrepTimeET!!.text.toString().toInt(),
+                "",
+                editDetailsPrepTimeS!!.value.toInt(),
                 editDetailsRatingRB!!.rating,
                 editDetailsIngredientsET!!.text.toString(),
                 editDetailsInstructionsET!!.text.toString(),
             )
             val recipeIndex = requireArguments().getInt("recipe_index")
             editRecipe(view.context, newRecipe, recipeIndex)
-            listener.switchToRecipeDetailsFragment(newRecipe, recipeIndex)
+            parentFragmentManager.popBackStack()
         }
 
     }

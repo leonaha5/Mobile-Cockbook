@@ -16,7 +16,8 @@
             android:id="@+id/AddRecipeNameET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name" />
+            android:hint="Name"
+            tools:ignore="HardcodedText" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -29,7 +30,8 @@
             android:layout_height="wrap_content"
             android:gravity="start"
             android:hint="Ingridinets"
-            android:lines="4" />
+            android:lines="2"
+            tools:ignore="HardcodedText" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -40,7 +42,10 @@
             android:id="@+id/AddRecipeInstructionsET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Instructions" />
+            android:gravity="start"
+            android:hint="Instructions"
+            android:lines="4"
+            tools:ignore="HardcodedText" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textview.MaterialTextView
@@ -48,7 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
         android:labelFor="@+id/addRecipePrepTimeS"
-        android:text="Prep time (min)" />
+        android:text="Prep time (min)"
+        tools:ignore="HardcodedText" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/addRecipePrepTimeS"
@@ -74,6 +80,7 @@
             android:id="@+id/AddRecipeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dodaj" />
+            android:text="Dodaj"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 </LinearLayout>

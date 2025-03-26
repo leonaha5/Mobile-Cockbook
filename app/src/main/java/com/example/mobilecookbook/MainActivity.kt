@@ -21,20 +21,16 @@ class MainActivity : AppCompatActivity(), RecipeListListener {
             insets
         }
 
-        //TODO rating bar doesnt update after editing recipe
-        //TODO add ability to add images to recipes
-        //TODO add ability to edit recipes images
-        //TODO animation on delete is ugly as fuck
-        //TODO the ui is ugly as fuck
-        //TODO navigation animations
-
         if (savedInstanceState == null) {
             replaceFragment(RecipeListFragment(), backStack = false)
         }
     }
 
     private fun replaceFragment(fragment: Fragment, backStack: Boolean = true) {
-        supportFragmentManager.beginTransaction()
+        supportFragmentManager.beginTransaction().setCustomAnimations(
+            R.anim.slide_in_right, R.anim.slide_out_left,
+            R.anim.slide_in_left, R.anim.slide_out_right
+        )
             .replace(R.id.fragment_container, fragment)
             .also { if (backStack) it.addToBackStack(null) }
             .commit()
